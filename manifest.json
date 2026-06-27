@@ -1,0 +1,1 @@
+{"name":"FakeVRStatus","description":"Shows a fake VR (Meta Quest) headset indicator on your name to everyone, via Discord's headless-session API.","authors":[{"name":"statflame","id":"0"}],"main":"index.js","vendetta":{"icon":"ic_controller_filled"},"hash":"0c19e57336b95d9d0013830f54cfc6b5f184e9ff9032edf586e5912397299a03"}
