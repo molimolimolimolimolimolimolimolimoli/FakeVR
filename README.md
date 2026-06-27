@@ -1,0 +1,44 @@
+# FakeVRStatus – Revenge port
+
+Broadcasts a fake Meta Quest headset indicator next to your name.
+Ported from [statflame's Vencord plugin](https://github.com/statflame/FakeVRstatus).
+
+> **Disclaimer:** This likely violates Discord's ToS. Use at your own risk.
+
+## Install
+
+Add the plugin URL in Revenge → Plugins → Install:
+
+```
+https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/
+```
+
+## Setup
+
+1. Open plugin settings → tap **Login**.
+2. Approve in your browser — you'll land on an `oculus.com` error page. That's normal.
+3. Copy the entire URL from the address bar and paste it into the prompt.
+4. Done. The VR icon appears next to your name for everyone.
+
+## Settings
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| Always On | ✅ | Broadcast at all times. Turn off to broadcast only while in a voice channel. |
+
+## How it works
+
+Uses Discord's headless-session API with an OAuth Bearer token obtained via
+Meta's `activities.write` scope (the same mechanism as the official Quest app).
+All HTTP calls run in the React Native layer — no Electron / native process needed.
+
+## Differences from the Vencord version
+
+| | Vencord | Revenge |
+|--|---------|---------|
+| HTTP | Electron main-process (native.ts) | React Native fetch |
+| Storage | `@api/DataStore` | `@vendetta/plugin` storage |
+| Settings | `definePluginSettings` | Settings component + `useProxy` |
+| Open URL | `VencordNative.native.openExternal` | `Linking.openURL` |
+| Commands | `/vrstatus` slash command | Settings page only |
+| Modals | Vencord modal API | `showInputAlert` / `showConfirmationAlert` |
